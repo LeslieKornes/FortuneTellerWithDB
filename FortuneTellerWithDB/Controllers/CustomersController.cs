@@ -28,6 +28,81 @@ namespace FortuneTellerWithDB.Controllers
             {
                 return HttpNotFound();
             }
+
+            #region AgeToRetirement
+            if (customer.Age % 2 == 0)
+                ViewBag.Retire = "45 long years";
+            else
+                ViewBag.Retire = "5 short and fun years";
+            #endregion
+
+            #region BirthMonthToBalance
+            if (customer.BirthMonth >= 1 && customer.BirthMonth <= 4)
+                ViewBag.Balance = 254;
+
+            else if (customer.BirthMonth >= 5 && customer.BirthMonth <= 8)
+                ViewBag.Balance = 1000;
+
+            else if (customer.BirthMonth >= 9 && customer.BirthMonth <= 12)
+                ViewBag.Balance = 50000;
+
+            else
+                ViewBag.Balance = 0;
+            #endregion
+
+#region FavoriteColorToTransportation
+            switch (customer.FovoriteColor.ToLower())
+            {
+                case "red":
+                    ViewBag.Transportation = "Jeep";
+                    break;
+
+                case "orange":
+                    ViewBag.Transportation = "Subaru Outback";
+                    break;
+
+                case "yellow":
+                    ViewBag.Transportation = "Ford Mustang";
+                    break;
+
+                case "green":
+                    ViewBag.Transportation = "bicycle";
+                    break;
+
+                case "blue":
+                    ViewBag.Transportation = "moped";
+                    break;
+
+                case "indigo":
+                    ViewBag.Transportation = "skateboard";
+                    break;
+
+                case "violet":
+                    ViewBag.Transportation = "Ford Focus";
+                    break;
+            }
+            #endregion
+
+            #region SiblingToVacation
+            if (customer.SiblingCount == 0)
+                ViewBag.Vacation = "Paris, France";
+
+            else if (customer.SiblingCount == 1)
+                ViewBag.Vacation = "Amsterdam";
+
+            else if (customer.SiblingCount == 2)
+                ViewBag.Vacation = "Geneva, Ohio";
+
+            else if (customer.SiblingCount == 3)
+                ViewBag.Vacation = "Los Angeles, California";
+
+            else if (customer.SiblingCount >= 4)
+                ViewBag.Vacation = "Capena, Italy";
+
+            else
+                ViewBag.Vacation = "Idaho";
+            #endregion
+
             return View(customer);
         }
 
