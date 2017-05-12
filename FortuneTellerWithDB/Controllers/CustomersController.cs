@@ -29,6 +29,8 @@ namespace FortuneTellerWithDB.Controllers
                 return HttpNotFound();
             }
 
+            ViewBag.FirstName = customer.FirstName;
+            ViewBag.LastName = customer.LastName;
             #region AgeToRetirement
             if (customer.Age % 2 == 0)
                 ViewBag.Retire = "45 long years";
